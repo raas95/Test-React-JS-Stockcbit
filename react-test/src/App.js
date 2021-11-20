@@ -26,10 +26,10 @@ const App=()=> {
      
   }
   return (
-    <div    >
-  
+    <div  style={{  }}  >
+        <div style={{display:'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))'}}>
         {data.map((item) =>(
-          <div style={{ width: 300,transition: '0.3s',boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'}}>
+          <div style={{ margin:40,width: 300,transition: '0.3s',boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'}}>
           {/* <div style={{}}> */}
           <img src={`${item?.Poster}`} width='300'  alt="logo" />
    
@@ -40,7 +40,7 @@ const App=()=> {
         
         ))
         }
-       
+       </div>
      
     </div>
   );
