@@ -1,49 +1,30 @@
-import React,{useEffect,useState} from 'react'
+import React  from 'react'
  
 import './App.css';
-import axios from 'axios' 
-const App=()=> {
-  const [data,setData]=useState([])
-  useEffect(()=>{
-    getData()
-  },[])
-  const getData =  (val,page,oldData)=>{
-    oldData = (oldData||[])  
-    page = (page||1)  
-    val = (val||'Batman')  
-    axios.get(`http://www.omdbapi.com/?apikey=faf7e5bb&s=${val}&page=${page}`)
-    .then(function (res) {
-      // handle success
-      let respon = oldData.concat(res?.data?.Search);
-      console.log({respon})
-      setData(respon)
-      
-    })
-    .catch(function (error) {
-      // handle error
-      console.log(error);
-    })
-     
-  }
-  return (
-    <div  style={{  }}  >
-        <div style={{display:'grid', gridTemplateColumns: 'repeat(5, minmax(0, 1fr))'}}>
-        {data.map((item) =>(
-          <div style={{ margin:40,width: 300,transition: '0.3s',boxShadow: '0 4px 8px 0 rgba(0,0,0,0.2)'}}>
-          {/* <div style={{}}> */}
-          <img src={`${item?.Poster}`} width='300'  alt="logo" />
+import {
+  BrowserRouter as Router,
+  Routes ,
+  Route 
    
- 
-         <p>{item?.Title}</p>
-        </div>
+} from "react-router-dom";
+import Home from './screen'
+import Detail from './screen/detail'
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+// Modal.setAppElement('#yourAppElement');
+const App=()=> {
+  
+  return (
+    <  >
+    <Router>
+      <Routes >
+        <Route exact path="/"  element={<Home/>} ></Route>
+        <Route exact path="/detail"  element={<Detail/>} ></Route>
         
-        
-        ))
-        }
-       </div>
-     
-    </div>
+      </Routes>
+    </Router>
+    </>
   );
 }
+ 
 
 export default App;
